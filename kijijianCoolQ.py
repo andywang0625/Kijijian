@@ -17,7 +17,7 @@ def sleepRefresh(sec,context):
             return
         sys.stdout.write('\r')
         sys.stdout.write("%s%% |%s" %(int(i%101), int(i%101)*'#'))
-        sys.stdout.flush()  ##随时刷新到屏幕上
+        sys.stdout.flush()
         time.sleep(0.01*sec)
     print ("\n")
 
@@ -58,7 +58,7 @@ def kijijian(keyword,minPrice,maxPrice,context):
                     list.append(productDescription)
                     print(productTitle+"\n"+str(productPrice)+"\n"+productDescription+"\n"+productDate+"\n")
                     print("\n\n\n\n")
-                    bot.send(context,productTitle+"\n"+"仅仅只卖:"+str(productPrice)+"\n"+"详情:"+productDescription+"\n"+"在"+productDate+"发售的"+"\n"+"点击查看:"+"https://www.kijiji.ca"+productUrl)
+                    bot.send(context,productTitle+"\n"+"Price:"+str(productPrice)+"\n"+"Info:"+productDescription+"\n"+"updated at:"+productDate+"\n"+"Click here to take a look"+"https://www.kijiji.ca"+productUrl)
                 else:
                     print(productTitle+" is out of date.\n")
     #    time.sleep(5)
@@ -82,7 +82,6 @@ bot = CQHttp(api_root='http://127.0.0.1:5700/',
 def handle_msg(context):
     if "kijijian" in context['message']:
         mess=context['message']
-#        bot.send(context,"Got it")
         agrr=mess.split()
         proKeyword=agrr[1]
         proMinPr=agrr[2]
@@ -90,8 +89,6 @@ def handle_msg(context):
         megg="keyword:"+proKeyword+" MinPrice:"+proMinPr+" MaxPrice:"+proMaxPr
         bot.send(context,megg)
         kijijian(proKeyword,proMinPr,proMaxPr,context)
-#    bot.send(context, '你好呀，下面一条是你刚刚发的：')
-#    return {'reply': context['message'], 'at_sender': False}
     if context['message'] == "Working?":
         bot.send(context,"works!")
     if context['message'] == "stopkja":
