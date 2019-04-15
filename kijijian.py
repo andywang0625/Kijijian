@@ -13,7 +13,7 @@ def sleepRefresh(sec):
     for i in range(101):
         sys.stdout.write('\r')
         sys.stdout.write("%s%% |%s" %(int(i%101), int(i%101)*'#'))
-        sys.stdout.flush()  ##随时刷新到屏幕上
+        sys.stdout.flush()
         time.sleep(0.05)
     print ("\n")
 
@@ -50,7 +50,7 @@ while True:
         if productTitle.find(keyword) != -1:
             if not productDescription in list:
                 list.append(productDescription)
-                print(productTitle+"\n"+"仅仅只卖:"+str(productPrice)+"\n"+"详情:"+productDescription+"\n"+"在"+productDate+"发售的"+"\n"+"点击查看:"+"https://www.kijiji.ca"+productUrl)
+                print(productTitle+"\n"+"Price:"+str(productPrice)+"\n"+"Info:"+productDescription+"\n"+"Updated at"+productDate+"\n"+"URL:"+"https://www.kijiji.ca"+productUrl)
                 print("\n\n\n\n")
             else:
                 print(productTitle+" is out of date.\n")
